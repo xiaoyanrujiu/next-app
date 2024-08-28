@@ -11,9 +11,6 @@ WORKDIR /app
 # 设置 npm 源地址
 RUN npm config set registry https://registry.npmmirror.com
 
-# 升级 npm 版本
-RUN npm install -g npm
-
 # 使用 PNPM 包管理工具安装依赖包
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml\* ./
 
