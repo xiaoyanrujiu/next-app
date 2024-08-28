@@ -9,7 +9,7 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 # 设置 npm 源地址
-RUN npm config set registry http://registry.npmmirror.com
+RUN npm config set registry https://registry.npmmirror.com
 
 # 升级 npm 版本
 RUN npm install -g npm
