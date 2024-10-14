@@ -1,0 +1,32 @@
+.homeSwiper {
+  :global {
+    .swiper {
+      border-radius: 6px;
+    }
+
+    .swiper-wrapper {
+      position: relative;
+      transition-timing-function: linear;
+    }
+
+    .left-mask {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 150px;
+      background: linear-gradient(90deg, #1d1d1d, rgba(20, 18, 24, 0));
+      z-index: 5;
+    }
+
+    .right-mask {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 150px;
+      background: linear-gradient(90deg, rgba(20, 18, 24, 0), #1d1d1d);
+      z-index: 5;
+    }
+  }
+}
