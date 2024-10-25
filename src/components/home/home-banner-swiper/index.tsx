@@ -1,13 +1,13 @@
 "use client";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 import styles from "./index.module.scss";
 
 // 导入 Swiper 的 CSS 样式
 import "swiper/css";
 import "swiper/css/autoplay";
-import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 /**
  * @description: 首页大图轮播图
@@ -22,7 +22,7 @@ const HomeBannerSwiper = () => {
   return (
     <div className={styles.homeSwiper}>
       <Swiper
-        modules={[Autoplay, Navigation]}
+        modules={[Autoplay, Pagination]}
         slidesPerView={1} // 同时显示5张图片
         slidesPerGroup={1} // 每次滑动5张图片
         loop={true} // 循环播放
@@ -30,7 +30,7 @@ const HomeBannerSwiper = () => {
           delay: 3000, // 设置每次自动播放的延迟时间
           disableOnInteraction: false, // 用户交互后继续自动播放
         }}
-        navigation={true}
+        pagination={{ clickable: true }}
         speed={1000}
       >
         {dataList.map((item, index) => (

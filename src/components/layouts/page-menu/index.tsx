@@ -17,10 +17,6 @@ const PageMenu: FC = () => {
       path: "/",
     },
     {
-      name: "工具",
-      path: "/tool",
-    },
-    {
       name: "代码对比",
       path: "/diff",
     },
