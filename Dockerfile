@@ -14,13 +14,10 @@ RUN npm config set registry https://registry.npmmirror.com
 # 使用 PNPM 包管理工具安装依赖包
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml\* ./
 
-# 安装 pnpm
-RUN npm install -g pnpm
-
 RUN \
     if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
-    elif [ -f package-lock.json ]; then npm i; \
-    elif [ -f pnpm-lock.yaml ]; then pnpm i; \
+    elif [ -f package-lock.json ]; then npm ci; \
+    elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && pnpm i; \
     else echo "Lockfile not found." && exit 1; \
     fi
 
@@ -41,7 +38,7 @@ ENV NEXT_TELEMETRY_DISABLED 1
 RUN \
     if [ -f yarn.lock ]; then SKIP_ENV_VALIDATION=1 yarn build; \
     elif [ -f package-lock.json ]; then SKIP_ENV_VALIDATION=1 npm run build; \
-    elif [ -f pnpm-lock.yaml ]; then SKIP_ENV_VALIDATION=1 pnpm run build; \
+    elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && SKIP_ENV_VALIDATION=1 pnpm run build; \
     else echo "Lockfile not found." && exit 1; \
     fi
 
