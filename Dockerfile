@@ -19,7 +19,7 @@ RUN npm install -g pnpm
 
 RUN \
     if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
-    elif [ -f package-lock.json ]; then npm ci; \
+    elif [ -f package-lock.json ]; then npm i; \
     elif [ -f pnpm-lock.yaml ]; then pnpm i; \
     else echo "Lockfile not found." && exit 1; \
     fi
